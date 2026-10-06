@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --caju-c: #c0392b; /* Cidades - Vermelho Caju */
+    --caju-a: #8d5b2c; /* Análise Institucional - Castanha */
+    --caju-j: #2d6a4f; /* Jurídico - Verde Folha */
+    --caju-u: #d97706; /* Ubíquo - Amarelo Flor/Sol */
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    touch-action: manipulation;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'Fira Code', monospace;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fef3c7;
+}
+::-webkit-scrollbar-thumb {
+  background: #d97706;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b45309;
+}
+
+/* Presentation projector typography utilities */
+.presentation-text-lg {
+  font-size: clamp(1.5rem, 3.2vw, 2.75rem);
+  line-height: 1.25;
+}
+
+.presentation-body {
+  font-size: clamp(1.125rem, 2vw, 1.75rem);
+  line-height: 1.4;
+}
+
+/* Touch and swipe smoothness */
+.touch-pan-y {
+  touch-action: pan-y;
+}
+
+/* Custom animations */
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.02); }
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 3s infinite ease-in-out;
+}

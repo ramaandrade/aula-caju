@@ -1,0 +1,17 @@
+{
+  "name": "Aula CAJU — Educação Financeira",
+  "short_name": "Aula CAJU",
+  "description": "Aulas em slides ilustrados sobre Educação Financeira para Pequenos Negócios (URCA / Cariri)",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fffbeb",
+  "theme_color": "#b91c1c",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
