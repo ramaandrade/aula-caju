@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Nut (castanha) -->
+  <path d="M50 8 C40 8 32 15 35 25 C37 32 45 36 52 35 C58 34 62 28 60 20 C58 12 55 8 50 8 Z" fill="#8d5b2c" stroke="#5c3a1b" stroke-width="2"/>
+  <!-- Cashew pseudofruit (pedúnculo carnoso) -->
+  <path d="M42 28 C28 40 20 62 30 82 C38 95 62 95 70 82 C80 62 72 40 58 28 C52 24 48 24 42 28 Z" fill="#dc2626"/>
+  <path d="M42 28 C35 45 32 65 38 82 C44 92 56 94 62 88 C52 82 46 60 48 40 C49 32 46 29 42 28 Z" fill="#ea580c" opacity="0.7"/>
+  <path d="M60 32 C68 45 68 62 62 78 C58 60 56 42 54 32 Z" fill="#facc15" opacity="0.6"/>
+  <!-- Leaf accent -->
+  <path d="M52 14 C62 10 70 12 74 18 C70 22 62 20 54 18 Z" fill="#2d6a4f"/>
+</svg>
