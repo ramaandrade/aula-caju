@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   Play, CheckCircle2, Award, Sparkles, BookOpen, 
-  ArrowRight, Star, Clock, Layers, ExternalLink 
+  ArrowRight, Star, Clock, Layers, ExternalLink, FileText, Download 
 } from 'lucide-react';
 import Fig1TrailMap from './figures/Fig1TrailMap';
 import Fig2SlideSequence from './figures/Fig2SlideSequence';
@@ -11,7 +11,8 @@ export default function TrailView({
   onSelectLesson, 
   completedLessons = [],
   onOpenGlossary,
-  onOpenDashboard
+  onOpenDashboard,
+  onOpenPdfCenter
 }) {
   const exam2Lessons = LESSONS_DATA.filter(l => l.isExam2);
   const otherLessons = LESSONS_DATA.filter(l => !l.isExam2);
@@ -39,16 +40,20 @@ export default function TrailView({
             Conceitos econômicos rigorosos demonstrados com a realidade e os dados do Cariri cearense.
           </p>
 
-          {/* Progresso Geral */}
-          <div className="pt-2 flex flex-wrap items-center gap-4 text-xs">
+          {/* Progresso Geral & Botão Central de PDFs */}
+          <div className="pt-2 flex flex-wrap items-center gap-3 text-xs">
             <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-xl backdrop-blur-xs">
               <Award size={16} className="text-amber-400" />
               <span>Progresso: <strong>{completedLessons.length} de 12 aulas</strong></span>
             </div>
-            <div className="flex items-center gap-1.5 bg-red-950/80 border border-red-700/80 px-3 py-1.5 rounded-xl text-red-200">
-              <Star size={14} className="text-amber-400 fill-amber-400" />
-              <span>Conteúdo da <strong>Avaliação 2</strong>: Aulas 3, 5, 6, 7, 8, 9 e 10</span>
-            </div>
+            
+            <button
+              onClick={onOpenPdfCenter}
+              className="flex items-center gap-1.5 bg-amber-600 hover:bg-amber-500 text-white font-extrabold px-3 py-1.5 rounded-xl shadow-md transition-all cursor-pointer"
+            >
+              <Download size={15} />
+              <span>Baixar Aulas das Trilhas em PDF</span>
+            </button>
           </div>
         </div>
 
@@ -73,16 +78,25 @@ export default function TrailView({
 
       {/* SEÇÃO 1: AULAS DA AVALIAÇÃO 2 (DESTAQUE PRIORITÁRIO) */}
       <div className="space-y-3">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-red-700 inline-block shadow-sm"></span>
+            <span className="w-3.5 h-3.5 rounded-full bg-red-700 inline-block shadow-sm"></span>
             <h3 className="text-base sm:text-lg font-black text-amber-950 font-heading">
               Aulas da Avaliação 2 (Foco do Semestre)
             </h3>
+            <span className="text-xs font-bold text-red-700 bg-red-100 px-2.5 py-0.5 rounded-full">
+              7 Aulas
+            </span>
           </div>
-          <span className="text-xs font-bold text-red-700 bg-red-100 px-2.5 py-0.5 rounded-full">
-            7 Aulas
-          </span>
+
+          <a
+            href="./pdf/Aula_CAJU_Trilha_Avaliacao_2.pdf"
+            download="Aula_CAJU_Trilha_Avaliacao_2.pdf"
+            className="self-start sm:self-auto flex items-center gap-1.5 px-3 py-1.5 bg-red-800 hover:bg-red-700 text-white rounded-xl text-xs font-bold shadow-xs transition-colors cursor-pointer"
+          >
+            <Download size={14} />
+            <span>Baixar Apostila da Trilha 1 (PDF)</span>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -136,16 +150,25 @@ export default function TrailView({
 
       {/* SEÇÃO 2: DEMAIS CONTEÚDOS DO MÓDULO 3 */}
       <div className="space-y-3 pt-2">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-emerald-800 inline-block shadow-sm"></span>
+            <span className="w-3.5 h-3.5 rounded-full bg-emerald-800 inline-block shadow-sm"></span>
             <h3 className="text-base sm:text-lg font-black text-amber-950 font-heading">
               Demais Conteúdos do Módulo 3
             </h3>
+            <span className="text-xs font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full">
+              5 Aulas
+            </span>
           </div>
-          <span className="text-xs font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full">
-            5 Aulas
-          </span>
+
+          <a
+            href="./pdf/Aula_CAJU_Trilha_Geral_Modulo_3.pdf"
+            download="Aula_CAJU_Trilha_Geral_Modulo_3.pdf"
+            className="self-start sm:self-auto flex items-center gap-1.5 px-3 py-1.5 bg-emerald-800 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-xs transition-colors cursor-pointer"
+          >
+            <Download size={14} />
+            <span>Baixar Apostila da Trilha 2 (PDF)</span>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -195,6 +218,27 @@ export default function TrailView({
             );
           })}
         </div>
+      </div>
+
+      {/* BANNER APOSTILA COMPLETA DAS 12 AULAS */}
+      <div className="bg-amber-100/90 border-2 border-amber-300 rounded-3xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="space-y-1 text-center sm:text-left">
+          <h4 className="font-black text-base text-amber-950 font-heading">
+            📖 Manual Completo: Módulo 3 (12 Aulas)
+          </h4>
+          <p className="text-xs text-stone-700 max-w-xl">
+            Volume encadernado contendo todas as 12 aulas ilustradas, casos práticos, fórmulas matemáticas, Lente CAJU e questões comentadas.
+          </p>
+        </div>
+
+        <a
+          href="./pdf/Aula_CAJU_Modulo_3_Completo_12_Aulas.pdf"
+          download="Aula_CAJU_Modulo_3_Completo_12_Aulas.pdf"
+          className="px-4 py-2 bg-amber-900 hover:bg-amber-950 text-white font-extrabold text-xs rounded-2xl flex items-center gap-2 shadow-md shrink-0 transition-transform hover:scale-105"
+        >
+          <Download size={16} />
+          <span>Baixar Livro Completo (PDF)</span>
+        </a>
       </div>
 
       {/* Rodapé Informativo Institucional */}

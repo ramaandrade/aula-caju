@@ -9,6 +9,7 @@ import CajuLensModal from './components/CajuLensModal';
 import GlossaryModal from './components/GlossaryModal';
 import ProfessorDashboard from './components/ProfessorDashboard';
 import PrintSummaryModal from './components/PrintSummaryModal';
+import PdfCenterModal from './components/PdfCenterModal';
 import { LESSONS_DATA } from './data/lessonsData';
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
   const [isGlossaryModalOpen, setIsGlossaryModalOpen] = useState(false);
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
   const [isSummaryModalOpen, setIsSummaryModalOpen] = useState(false);
+  const [isPdfCenterOpen, setIsPdfCenterOpen] = useState(false);
 
   // Progresso salvo no LocalStorage
   const [completedLessons, setCompletedLessons] = useState(() => {
@@ -169,6 +171,7 @@ export default function App() {
         onOpenDashboard={() => setIsDashboardOpen(true)}
         onOpenRemote={() => setIsRemoteMode(true)}
         onOpenSummary={() => setIsSummaryModalOpen(true)}
+        onOpenPdfCenter={() => setIsPdfCenterOpen(true)}
         onTogglePresentation={() => setIsPresentationMode(true)}
         currentView={activeLessonId ? 'lesson' : 'trail'}
         completedLessons={completedLessons}
@@ -207,11 +210,17 @@ export default function App() {
             completedLessons={completedLessons}
             onOpenGlossary={() => setIsGlossaryModalOpen(true)}
             onOpenDashboard={() => setIsDashboardOpen(true)}
+            onOpenPdfCenter={() => setIsPdfCenterOpen(true)}
           />
         )}
       </main>
 
       {/* Modais Globais */}
+      <PdfCenterModal
+        isOpen={isPdfCenterOpen}
+        onClose={() => setIsPdfCenterOpen(false)}
+      />
+
       <CajuLensModal
         isOpen={isCajuLensModalOpen}
         onClose={() => setIsCajuLensModalOpen(false)}

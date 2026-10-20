@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   Sparkles, BookOpen, Users, Radio, Maximize2, 
-  Layers, CheckCircle, Shield, Award 
+  Layers, CheckCircle, Shield, Award, FileText 
 } from 'lucide-react';
 
 export default function Navbar({ 
@@ -9,6 +9,7 @@ export default function Navbar({
   onOpenDashboard, 
   onOpenRemote,
   onOpenSummary,
+  onOpenPdfCenter,
   onTogglePresentation,
   currentView,
   completedLessons = []
@@ -41,6 +42,16 @@ export default function Navbar({
 
         {/* Ações da Barra Superior */}
         <div className="flex items-center gap-1.5 sm:gap-2">
+          {/* Botão Apostilas PDF */}
+          <button
+            onClick={onOpenPdfCenter}
+            className="px-2.5 py-1 rounded-xl bg-amber-700/90 hover:bg-amber-600 text-white transition-all flex items-center gap-1.5 text-xs font-bold cursor-pointer shadow-xs border border-amber-500/30"
+            title="Apostilas das Trilhas em PDF"
+          >
+            <FileText size={15} className="text-amber-200" />
+            <span className="hidden sm:inline">Apostilas PDF</span>
+          </button>
+
           {/* Glossário */}
           <button
             onClick={onOpenGlossary}
