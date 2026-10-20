@@ -47,8 +47,8 @@ export default function PdfCenterModal({ isOpen, onClose, initialTab = 'tracks' 
 
         {/* Abas e Busca */}
         <div className="p-3 bg-amber-100/80 border-b border-amber-200 space-y-2">
-          <div className="flex items-center justify-between gap-2">
-            <div className="flex gap-1.5">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex flex-wrap gap-1.5">
               <button
                 onClick={() => setActiveTab('tracks')}
                 className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all cursor-pointer ${
