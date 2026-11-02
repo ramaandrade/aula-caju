@@ -1095,15 +1095,15 @@ export const LESSONS_DATA = [
             explanation: "Ciclo Operacional = PME + PMR = 20 + 35 = 55 dias. Ciclo Financeiro = CO − PMP = 55 − 15 = 40 dias."
           },
           {
-            question: "Se essa mesma loja passar a receber todas as suas vendas à vista via Pix (reduzindo o PMR para 0 dias), o que acontecerá com o Ciclo Financeiro?",
+            question: "Considerando a mesma loja (que mantém Estoque PME de 20 dias e prazo com Fornecedores PMP de 15 dias): se ela passar a receber todas as vendas à vista via Pix (reduzindo o Prazo de Recebimento PMR de 35 dias para 0 dias), o que acontecerá com o Ciclo Financeiro?",
             options: [
               "O Ciclo Financeiro aumentará para 55 dias",
-              "O Ciclo Financeiro cairá para 5 dias (20 + 0 − 15 = 5 dias), diminuindo drasticamente a necessidade de capital de giro",
-              "O negócio precisará de um empréstimo bancário imediato",
-              "O fornecedor suspenderá o prazo de pagamento"
+              "O Ciclo Financeiro cairá para apenas 5 dias (20 dias de estoque + 0 de Pix − 15 do fornecedor = 5 dias), reduzindo drasticamente a necessidade de capital de giro",
+              "O Ciclo Financeiro continuará em 40 dias, pois o tempo de estoque permaneceu o mesmo",
+              "O Ciclo Financeiro ficará negativo em −15 dias"
             ],
             correctIndex: 1,
-            explanation: "Com PMR = 0, CO = 20 + 0 = 20 dias. O CF se torna: 20 − 15 = apenas 5 dias. A empresa quase não precisará bancar intervalo sem dinheiro."
+            explanation: "Origem dos valores: PME = 20 dias (estoque) e PMP = 15 dias (fornecedor). Com o Pix à vista (PMR = 0 dias), o Ciclo Operacional passa a ser 20 + 0 = 20 dias. O novo Ciclo Financeiro será: 20 − 15 = apenas 5 dias de espera (contra os 40 dias anteriores)! Quase não haverá 'deserto de caixa'."
           }
         ]
       }
