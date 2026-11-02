@@ -163,9 +163,14 @@ export default function MarkupCalculator() {
             )}
 
             {additionalVolumePercent !== null && newProfit > 0 && discountOffered > 0 && (
-              <div className="text-[10px] text-amber-900 bg-amber-100/80 p-1.5 rounded-lg border border-amber-200 flex items-center justify-between">
-                <span>Vendas extras para manter lucro total:</span>
-                <strong className="font-mono font-bold text-amber-950">+{additionalVolumePercent.toFixed(1)}% un.</strong>
+              <div className="text-[10px] text-amber-950 bg-amber-100/90 p-2.5 rounded-xl border border-amber-300 space-y-1">
+                <div className="flex items-center justify-between font-bold">
+                  <span>Esforço extra para empatar o lucro total:</span>
+                  <span className="text-amber-950 font-black font-mono text-xs">+{additionalVolumePercent.toFixed(1)}% vendas</span>
+                </div>
+                <p className="text-[10.5px] text-stone-700 leading-snug pt-0.5">
+                  💡 <strong>Na prática:</strong> se você vendia <strong>100 unidades</strong> e lucrava <strong>R$ {(unitProfit * 100).toFixed(2)}</strong>, com esse desconto precisará produzir e vender <strong>{Math.round(100 * (1 + additionalVolumePercent / 100))} unidades</strong> (trabalhar <strong>+{additionalVolumePercent.toFixed(1)}% a mais</strong>) apenas para levar o mesmo dinheiro para casa!
+                </p>
               </div>
             )}
           </div>
