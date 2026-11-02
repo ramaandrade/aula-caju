@@ -160,7 +160,7 @@ export default function SlideViewer({
           </div>
         ) : (
           /* Card de texto/modelo quando não é figura chave complexa */
-          <div className="w-full bg-white rounded-3xl p-5 border-2 border-amber-200 shadow-sm text-left space-y-3">
+          <div className="w-full bg-white rounded-3xl p-4 sm:p-5 border-2 border-amber-200 shadow-sm text-left space-y-3 max-h-[68vh] overflow-y-auto">
             <p className="text-sm sm:text-base font-semibold text-stone-900 leading-relaxed">
               {currentSlide.content}
             </p>
@@ -169,6 +169,48 @@ export default function SlideViewer({
               <div className="bg-amber-50/80 rounded-2xl p-3.5 border border-amber-200/80 text-xs text-stone-700 leading-relaxed font-medium">
                 <span className="font-bold text-amber-950 block mb-0.5">Aprofundamento:</span>
                 {currentSlide.studyContent}
+              </div>
+            )}
+
+            {currentSlide.laymanExample && (
+              <div className="bg-emerald-50/90 rounded-2xl p-3.5 border-2 border-emerald-300 text-xs text-stone-800 leading-relaxed space-y-2.5 shadow-2xs">
+                <div className="flex items-center gap-1.5 font-bold text-emerald-950 text-xs sm:text-sm border-b border-emerald-200 pb-1.5">
+                  <Sparkles size={16} className="text-emerald-700 shrink-0" />
+                  <span>{currentSlide.laymanExample.title || "Exemplo Prático para Leigos"}</span>
+                </div>
+
+                {currentSlide.laymanExample.story && (
+                  <p className="text-stone-700 leading-relaxed">
+                    {currentSlide.laymanExample.story}
+                  </p>
+                )}
+
+                {currentSlide.laymanExample.comparison && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                    <div className="bg-red-50 p-2.5 rounded-xl border border-red-200 text-[11px]">
+                      <span className="font-bold text-red-900 block mb-1">🏦 No Banco Tradicional:</span>
+                      <p className="text-stone-600">{currentSlide.laymanExample.comparison.traditional}</p>
+                    </div>
+                    <div className="bg-emerald-100/70 p-2.5 rounded-xl border border-emerald-300 text-[11px]">
+                      <span className="font-bold text-emerald-950 block mb-1">🤝 No Crediamigo Solidário:</span>
+                      <p className="text-stone-700">{currentSlide.laymanExample.comparison.solidary}</p>
+                    </div>
+                  </div>
+                )}
+
+                {currentSlide.laymanExample.points && (
+                  <div className="space-y-1.5 pt-1">
+                    {currentSlide.laymanExample.points.map((pt, idx) => (
+                      <div key={idx} className="flex items-start gap-2 bg-white/80 p-2 rounded-xl border border-emerald-200 text-[11px]">
+                        <span className="text-sm shrink-0">{pt.icon || "👉"}</span>
+                        <div>
+                          <strong className="text-stone-900 block">{pt.label}</strong>
+                          <span className="text-stone-600">{pt.text}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 

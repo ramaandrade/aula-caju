@@ -1021,9 +1021,34 @@ export const LESSONS_DATA = [
         title: "Realidade Local: Crediamigo e o Giro Solidário",
         subtitle: "Liderança do Microcrédito no Nordeste",
         content: "No Crediamigo do Banco do Nordeste (BNB), a modalidade de Capital de Giro através de grupos solidários responde por cerca de 70% do volume total de operações no Cariri.",
-        studyContent: "A metodologia de aval solidário (onde 3 a 5 comerciantes vizinhos garantem mutuamente os pagamentos do grupo) reduz inadimplência e democratiza o giro sem exigir patrimônio ou hipoteca.",
-        speakerNotes: "Explique como funciona o grupo solidário de 3 a 5 vizinhos no Crediamigo.",
-        audioNarration: "No Crediamigo, o financiamento de capital de giro via grupos solidários representa cerca de setenta por cento de todas as operações no Cariri.",
+        studyContent: "Por que 70% dos pequenos negócios usam o grupo solidário? Porque o banco tradicional exige casa quitada ou carro de garantia (hipoteca) para liberar capital de giro. Como o microempreendedor não tem esses bens, o Crediamigo substitui a hipoteca pela 'garantia social': um grupo de 3 a 5 vizinhos de confiança onde um é fiador do outro.",
+        laymanExample: {
+          title: "Como funciona na prática? (Exemplo da Feira de Juazeiro)",
+          story: "Dona Socorro (da marmitaria), Seu Expedito (dos terços) e Mestre Valdir (sapateiro) precisam de R$ 2.000 cada um para comprar mercadorias antes da grande Romaria de Juazeiro.",
+          comparison: {
+            traditional: "O banco comum exige escritura de imóvel, carro quitado e holerite de renda formal. Nenhum deles consegue pegar empréstimo.",
+            solidary: "No Crediamigo, os 3 vizinhos assinam juntos. O banco libera R$ 2.000 para cada um. Se todos pagarem certinho, o limite sobe na próxima rodada!"
+          },
+          points: [
+            {
+              icon: "🤝",
+              label: "Garantia da Palavra ('Um por todos e todos por um'):",
+              text: "Se Valdir passar aperto para pagar a parcela de R$ 220, Dona Socorro e Seu Expedito ajudam a cobrar e quitar juntos, pois se um atrasar, ninguém do grupo pega empréstimo de novo."
+            },
+            {
+              icon: "📈",
+              label: "Crédito que Cresce com a Confiança:",
+              text: "Quem paga certinho começa com R$ 1.500, depois renova para R$ 3.000, R$ 5.000 até R$ 15.000. O comerciante nunca mais fica sem dinheiro para comprar mercadorias."
+            },
+            {
+              icon: "⭐",
+              label: "Por que o calote é menor que 2%?",
+              text: "No Cariri, a honra na praça e o respeito aos vizinhos valem mais que qualquer garantia de cartório. Ninguém quer passar vergonha na frente dos amigos de feira."
+            }
+          ]
+        },
+        speakerNotes: "Explique como funciona o grupo solidário de 3 a 5 vizinhos no Crediamigo com o exemplo de Dona Socorro, Seu Expedito e Valdir.",
+        audioNarration: "No Crediamigo, o financiamento de capital de giro via grupos solidários representa cerca de setenta por cento de todas as operações no Cariri. A garantia é a palavra e a confiança entre vizinhos.",
         figureKey: "local_crediamigo_stats",
         localSource: {
           source: "Banco do Nordeste / Diário do Nordeste",
