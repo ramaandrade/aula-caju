@@ -129,12 +129,19 @@ export default function MarkupCalculator() {
 
             <div className="flex justify-between items-center">
               <span className="text-stone-600">Novo lucro unitário:</span>
+              <span className={`font-mono font-bold ${newProfit <= 0 ? 'text-red-600' : 'text-stone-900'}`}>
+                R$ {newProfit.toFixed(2)}
+              </span>
+            </div>
+
+            <div className="flex justify-between items-center">
+              <span className="text-stone-600">Novo percentual do lucro:</span>
               <div className="text-right">
-                <span className={`font-mono font-bold ${newProfit <= 0 ? 'text-red-600' : 'text-stone-900'}`}>
-                  R$ {newProfit.toFixed(2)}
+                <span className={`font-mono font-bold ${newProfit <= 0 ? 'text-red-600' : 'text-emerald-800'}`}>
+                  {newMarginPercent.toFixed(1)}%
                 </span>
-                <span className="text-[10px] text-stone-500 ml-1">
-                  ({newMarginPercent.toFixed(1)}% da venda)
+                <span className="text-[10px] text-stone-500 font-normal ml-1">
+                  (era {targetMargin.toFixed(1)}%)
                 </span>
               </div>
             </div>
