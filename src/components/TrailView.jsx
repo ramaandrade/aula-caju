@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   Play, CheckCircle2, Award, Sparkles, BookOpen, 
-  ArrowRight, Star, Clock, Layers, ExternalLink, FileText, Download 
+  ArrowRight, Star, Clock, Layers, ExternalLink, FileText, Download, RefreshCw 
 } from 'lucide-react';
 import Fig1TrailMap from './figures/Fig1TrailMap';
 import Fig2SlideSequence from './figures/Fig2SlideSequence';
@@ -242,13 +242,26 @@ export default function TrailView({
       </div>
 
       {/* Rodapé Informativo Institucional */}
-      <footer className="pt-6 pb-4 border-t border-amber-200 text-center text-xs text-stone-600 space-y-1">
+      <footer className="pt-6 pb-4 border-t border-amber-200 text-center text-xs text-stone-600 space-y-2">
         <p className="font-semibold text-amber-950">
           Curso de Ciências Econômicas · Universidade Regional do Cariri (URCA)
         </p>
         <p className="text-[11px] text-stone-500">
           Campus Pimenta, Crato-CE · Disciplina de Educação Financeira · Outubro de 2026
         </p>
+
+        {/* Botão de Atualização / Limpeza de Cache Mobile */}
+        <div className="pt-2 flex items-center justify-center">
+          <button
+            type="button"
+            onClick={() => window.forcarAtualizacaoApp ? window.forcarAtualizacaoApp() : window.location.reload(true)}
+            className="px-3.5 py-1.5 bg-amber-200/80 hover:bg-amber-300 text-amber-950 font-bold rounded-xl text-[11px] flex items-center gap-1.5 transition-all shadow-xs border border-amber-300 cursor-pointer active:scale-95"
+            title="Limpar cache do navegador e forçar o carregamento da versão mais recente"
+          >
+            <RefreshCw size={13} className="text-amber-800" />
+            <span>Atualizar Aplicativo (Limpar Cache)</span>
+          </button>
+        </div>
       </footer>
     </div>
   );

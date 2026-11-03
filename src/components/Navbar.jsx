@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   Sparkles, BookOpen, Users, Radio, Maximize2, 
-  Layers, CheckCircle, Shield, Award, FileText 
+  Layers, CheckCircle, Shield, Award, FileText, RefreshCw 
 } from 'lucide-react';
 
 export default function Navbar({ 
@@ -42,6 +42,16 @@ export default function Navbar({
 
         {/* Ações da Barra Superior */}
         <div className="flex items-center gap-1.5 sm:gap-2">
+          {/* Botão Atualizar / Sincronizar Versão */}
+          <button
+            onClick={() => window.forcarAtualizacaoApp ? window.forcarAtualizacaoApp() : window.location.reload(true)}
+            className="p-1.5 sm:px-2 sm:py-1 rounded-xl bg-amber-800/80 hover:bg-amber-700 text-amber-200 hover:text-white transition-all flex items-center gap-1 text-xs font-bold cursor-pointer"
+            title="Atualizar App / Limpar Cache"
+          >
+            <RefreshCw size={15} />
+            <span className="hidden lg:inline text-[11px]">Atualizar</span>
+          </button>
+
           {/* Botão Apostilas PDF */}
           <button
             onClick={onOpenPdfCenter}
