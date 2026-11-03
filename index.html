@@ -8,19 +8,68 @@
     <meta name="description" content="Aula CAJU — Aplicativo web mobile de aulas em slides ilustrados sobre Educação Financeira para Pequenos Negócios. URCA / Cariri." />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Prevenção de cache estagnado no HTML para dispositivos móveis -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
     <title>Aula CAJU — Slides de Educação Financeira (URCA)</title>
-    <script type="module" crossorigin src="./assets/index-2QPossiv.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-RVvuFzYg.css">
+    <script type="module" crossorigin src="./assets/index-D_ym2Gfm.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CrH4zxdw.css">
   </head>
   <body class="bg-amber-50/40 text-stone-900 antialiased selection:bg-amber-200 selection:text-amber-900 overflow-x-hidden">
     <div id="root"></div>
     <script>
+      // Função global acessível pelo app para limpar cache e forçar atualização
+      window.forcarAtualizacaoApp = async function() {
+        try {
+          if ('caches' in window) {
+            const keys = await caches.keys();
+            await Promise.all(keys.map(k => caches.delete(k)));
+          }
+          if ('serviceWorker' in navigator) {
+            const regs = await navigator.serviceWorker.getRegistrations();
+            await Promise.all(regs.map(r => r.unregister()));
+          }
+        } catch (e) {
+          console.error(e);
+        }
+        window.location.href = window.location.pathname + '?v=' + Date.now();
+      };
+
       if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js').catch(() => {});
+          navigator.serviceWorker.register('./sw.js?v=2.2.0').then((reg) => {
+            // Força busca imediata por atualizações do SW no GitHub Pages
+            reg.update();
+
+            // Detecta quando há uma nova versão baixada
+            reg.addEventListener('updatefound', () => {
+              const newWorker = reg.installing;
+              if (newWorker) {
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    console.log('[Aula CAJU] Nova versão detectada! Atualizando app...');
+                    newWorker.postMessage({ type: 'SKIP_WAITING' });
+                  }
+                });
+              }
+            });
+          }).catch((err) => console.log('SW error:', err));
+
+          // Quando o novo Service Worker assumir o controle, recarrega a página
+          let isReloading = false;
+          navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (!isReloading) {
+              isReloading = true;
+              console.log('[Aula CAJU] Controlador atualizado. Recarregando tela...');
+              window.location.reload();
+            }
+          });
         });
       }
     </script>
